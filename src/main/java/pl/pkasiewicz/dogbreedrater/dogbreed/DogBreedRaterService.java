@@ -50,14 +50,14 @@ public class DogBreedRaterService {
 //    }
 
     public List<DogBreedLeaderboard> getAllBreeds() {
-        List<DogBreed> allBreeds = dogBreedRepository.findAll();
+        List<DogBreed> allBreeds = dogBreedRepository.findAllByOrderByRatingDesc();
         List<DogBreedLeaderboard> dogBreedLeaderboardsList = new ArrayList<>();
         allBreeds.forEach(b -> {
             String imgUrl = b.getBreed() + ".jpg";
             String breedName = nameFormatterToPrint(b.getBreed());
             dogBreedLeaderboardsList.add(new DogBreedLeaderboard(imgUrl, breedName, b.getRating()));
         });
-        return dogBreedLeaderboardsList.stream().sorted(Comparator.comparingInt(DogBreedLeaderboard::rating).reversed()).toList();
+        return dogBreedLeaderboardsList;
     }
 
     private String nameFormatterToPrint(String breed) {

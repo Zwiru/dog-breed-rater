@@ -17,6 +17,11 @@ public class DogBreedRaterController {
         this.dogBreedRaterService = dogBreedRaterService;
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/vote";
+    }
+
     @GetMapping("/vote")
     public String getVote(Model model) {
         QuestionResponse questionResponse = dogBreedRaterService.getQuestionResponse();

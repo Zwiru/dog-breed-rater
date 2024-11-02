@@ -2,7 +2,7 @@ spring:
   application:
     name: dog-breed-rater
   profiles:
-    active: dev
+    active: prod
   jpa:
     show-sql: true
     hibernate:

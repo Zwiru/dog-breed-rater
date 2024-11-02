@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: dog-breed-rater
+  profiles:
+    active: dev
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate

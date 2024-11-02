@@ -17,15 +17,18 @@ public class DogBreedRaterService {
     private final RandomDogBreedIdPairGenerator RandomDogBreedIdPairGenerator;
     private final EloRatingCalculator eloRatingCalculator = new EloRatingCalculator();
 
-    public DogBreedRaterService(DogBreedRepository dogBreedRepository, RandomDogBreedIdPairGenerator RandomDogBreedIdPairGenerator) {
+    public DogBreedRaterService(DogBreedRepository dogBreedRepository,
+                                RandomDogBreedIdPairGenerator RandomDogBreedIdPairGenerator) {
         this.dogBreedRepository = dogBreedRepository;
         this.RandomDogBreedIdPairGenerator = RandomDogBreedIdPairGenerator;
     }
 
     public QuestionResponse getQuestionResponse() {
         DogBreedIdPair pairId = RandomDogBreedIdPairGenerator.generate();
-        DogBreed firstBreed = dogBreedRepository.findById(Long.valueOf(pairId.fistBreed())).orElseThrow(() -> new RuntimeException("Id not found: " + pairId.fistBreed() + " " + dogBreedRepository.findAll().size()));
-        DogBreed secondBreed = dogBreedRepository.findById(Long.valueOf(pairId.secondBreed())).orElseThrow(() -> new RuntimeException("Id not found: " + pairId.fistBreed()));
+        DogBreed firstBreed = dogBreedRepository.findById(Long.valueOf(pairId.fistBreed())).orElseThrow(() ->
+                new RuntimeException("Id not found: " + pairId.fistBreed() + " " + dogBreedRepository.findAll().size()));
+        DogBreed secondBreed = dogBreedRepository.findById(Long.valueOf(pairId.secondBreed())).orElseThrow(() ->
+                new RuntimeException("Id not found: " + pairId.fistBreed()));
         String firstBreedName = nameFormatterToPrint(firstBreed.getBreed());
         String firstBreedImageUrl = firstBreed.getBreed() + ".jpg";
         String secondBreedName = nameFormatterToPrint(secondBreed.getBreed());

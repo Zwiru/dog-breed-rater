@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      host: npm_mongodb_1
+      host: mongodb
       port: 27017
       database: dbr-db
       username: root

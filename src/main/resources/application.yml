@@ -1,9 +1,6 @@
 spring:
-  application:
-    name: dog-breed-rater
-  profiles:
-    active: prod
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: validate
+    defer-datasource-initialization: true
+  profiles:
+    default: prod

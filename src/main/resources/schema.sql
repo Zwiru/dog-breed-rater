@@ -1,4 +1,7 @@
-create table dog_breed
+CREATE DATABASE IF NOT EXISTS dog_breed_rater;
+use dog_breed_rater;
+
+CREATE TABLE IF NOT EXISTS dog_breed
 (
     id     BIGINT AUTO_INCREMENT PRIMARY KEY,
     breed  VARCHAR(50),

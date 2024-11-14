@@ -79,7 +79,11 @@ public class DogBreedRaterService {
         DogBreed loser = dogBreedRepository.findByBreed(nameFormatterToSave(loserBreed))
                 .orElseThrow(() -> new RuntimeException("Breed not found: " + loserBreed));
         BreedRatingPair breedRatingPair = eloRatingCalculator.EloRating(winner.getRating(), loser.getRating());
-        dogBreedRepository.save(new DogBreed(winner.getId(), winner.getBreed(), breedRatingPair.winnerRating()));
-        dogBreedRepository.save(new DogBreed(loser.getId(), loser.getBreed(), breedRatingPair.loserRating()));
+        saveUpdatedBreed(new DogBreed(winner.getId(), winner.getBreed(), breedRatingPair.winnerRating()));
+        saveUpdatedBreed(new DogBreed(loser.getId(), loser.getBreed(), breedRatingPair.loserRating()));
+    }
+
+    public void saveUpdatedBreed(DogBreed dogBreed) {
+        dogBreedRepository.save(dogBreed);
     }
 }

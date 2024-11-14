@@ -36,22 +36,6 @@ public class DogBreedRaterService {
         return new QuestionResponse(firstBreedName, firstBreedImageUrl, secondBreedName, secondBreedImageUrl);
     }
 
-//    private String breedImageUrlBuilder(DogBreed dogBreed) {
-//        String breed = dogBreed.getBreed();
-//        String url = "";
-//        if (breed.contains("-")) {
-//            String[] subBreed = breed.split("-");
-//            url = String.format("https://dog.ceo/api/breed/%s/%s/images/random", subBreed[0], subBreed[1]);
-//        } else {
-//            url = String.format("https://dog.ceo/api/breed/%s/images/random", breed);
-//        }
-//        try {
-//            return BreedImageUrlReader.getJson(new URL(url));
-//        } catch (MalformedURLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
     public List<DogBreedLeaderboard> getAllBreeds() {
         List<DogBreed> allBreeds = dogBreedRepository.findAllByOrderByRatingDesc();
         List<DogBreedLeaderboard> dogBreedLeaderboardsList = new ArrayList<>();

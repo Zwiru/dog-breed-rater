@@ -1,6 +1,10 @@
 spring:
   jpa:
     show-sql: true
-    defer-datasource-initialization: true
   profiles:
-    active: prod
+    default: prod
+  liquibase:
+    change-log: classpath:db/master.xml
+  sql:
+    init:
+      mode: never
